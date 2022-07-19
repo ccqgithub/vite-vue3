@@ -1,0 +1,22 @@
+@forward "@/styles/reset.scss";
+@use "@/styles/var.scss";
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.5;
+  height: 100%;
+  color: var.$colorNatural;
+}
+
+#app {
+  height: 100%;
+  background: #edf1f9;
+}
