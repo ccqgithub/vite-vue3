@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { HelloWorld } from '@/components';
-import * as S from './index.module.scss';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <div :class="S.box">
-    <img alt="Vue logo" src="@/assets/logo.png" />
-    <HelloWorld />
-  </div>
+  <RouterView></RouterView>
 </template>

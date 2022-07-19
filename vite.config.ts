@@ -10,8 +10,8 @@ import { loadEnv } from './scripts/utils/loadEnv';
 const root = __dirname;
 
 // https://vitejs.dev/config/
-export default defineConfig((ctx) => {
-  const { define, envDir, envPrefix } = loadEnv({ mode: ctx.mode, root });
+export default defineConfig(({ mode }) => {
+  const { define, envDir, envPrefix } = loadEnv({ mode: mode, root });
 
   return {
     envDir,
@@ -25,7 +25,8 @@ export default defineConfig((ctx) => {
       }
     },
     server: {
-      host: 'localhost'
+      host: 'localhost',
+      port: 3000
     },
     css: {
       modules: {
