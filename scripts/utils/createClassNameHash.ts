@@ -26,13 +26,15 @@ export const createClassNamehash = (args: {
   prefix: string;
 }) => {
   const { root, name, filename, prefix } = args;
-  const p = path.relative(root, filename).replace(/\\/g, '/');
+  const parsedFilename = filename.split('?')[0]!;
+  const p = path.relative(root, parsedFilename).replace(/\\/g, '/');
   const basename = path
-    .basename(filename)
+    .basename(parsedFilename)
     .replace(/\.(css|less)/, '')
     .replace(/\./g, '_');
   const content = `${prefix}-${basename}__${p}___${name}`;
   const hash = getUniqueName(content, p).substring(0, 5);
   const cls = `${basename}_${name}__${hash}`;
+
   return prefix ? `${prefix}-${cls}` : cls;
 };
