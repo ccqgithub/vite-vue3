@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { loadLocaleMessages, i18n, isLangFromPath } from '@/i18n';
+import { joinUrl } from '@/utils';
+import { baseUrl } from './util';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -28,7 +30,7 @@ const routes: RouteRecordRaw[] = [
 
 const base = isLangFromPath.value ? `/${i18n.global.locale.value}/` : '/';
 const router = createRouter({
-  history: createWebHistory(base),
+  history: createWebHistory(joinUrl(baseUrl, base)),
   routes
 });
 
@@ -36,5 +38,13 @@ router.beforeEach(async (to, from, next) => {
   await loadLocaleMessages();
   return next();
 });
+
+router.afterEach(async () => {
+  //
+});
+
+export const getCurrentRoute = () => {
+  return router.currentRoute;
+};
 
 export { router };

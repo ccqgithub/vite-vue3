@@ -18,6 +18,8 @@
     "declarationMap": true,
     "allowJs": true,
     "checkJs": false,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
     "lib": ["esnext", "dom", "dom.iterable"],
     "types": ["node"],
     "paths": {

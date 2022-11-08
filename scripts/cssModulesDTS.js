@@ -4,15 +4,13 @@ const glob = require('glob');
 const watch = require('node-watch');
 const minimatch = require('minimatch');
 const DtsCreator = require('typed-css-modules');
-const { ESLint } = require('eslint');
 
 const RealDtsCreator = DtsCreator.default;
 const root = process.cwd();
 const creator = new RealDtsCreator({
   rootDir: root,
-  namedExports: true
+  namedExports: false
 });
-const eslint = new ESLint({ fix: true });
 
 const updateFile = async (f) => {
   try {
@@ -28,12 +26,8 @@ const updateFile = async (f) => {
         }
       ]
     });
-    await creator.create(f, out.css, true).then(async (content) => {
-      const res = await eslint.lintText(content.formatted, {
-        filePath: content.outputFilePath
-      });
-      return content.writeFile(() => res[0].output);
-    });
+    const content = await creator.create(f, out.css, true);
+    return await content.writeFile(() => content.formatted || '');
   } catch (e) {
     console.error(e);
   }

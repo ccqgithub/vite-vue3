@@ -1,3 +1,55 @@
-$colorPrimary: #008dff;
+@use "sass:list";
+@use "sass:map";
 
+$colorPrimary: #008dff;
 $colorNatural: #000;
+
+$breackPoints: xxl, xl, l, m, s, sx;
+
+$breackPointsMinWidth: (
+  "xxl": 1921px,
+  "xl": 1537px,
+  "l": 1281px,
+  "m": 1025px,
+  "s": 641px,
+  "sx": 0px
+);
+
+$breackPointsMaxWidth: (
+  "xxl": 9999px,
+  "xl": 1920px,
+  "l": 1536px,
+  "m": 1280px,
+  "s": 1024px,
+  "sx": 640px
+);
+
+@mixin breakpoint-strict($type) {
+  @if not list.index($breackPoints, $type) {
+    @content();
+  } @else {
+    @each $var in $breackPoints {
+      @if map.get($breackPointsMinWidth, $type) and
+        map.get(breackPointsMaxWidth, $type)
+      {
+        @media (min-width: map.get($breackPointsMinWidth, $type)) and (max-width: map.get(breackPointsMaxWidth, $type)) {
+          @content();
+        }
+      }
+    }
+  }
+}
+
+@mixin breakpoint($type) {
+  @if not list.index($breackPoints, $type) {
+    @content();
+  } @else {
+    @each $var in $breackPoints {
+      @if map.get($breackPointsMaxWidth, $type) {
+        @media (max-width: map.get($breackPointsMaxWidth, $type)) {
+          @content();
+        }
+      }
+    }
+  }
+}

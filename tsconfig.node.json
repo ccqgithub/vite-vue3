@@ -3,7 +3,9 @@
     "strict": true,
     "composite": true,
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true
   },
   "include": ["vite.config.ts", "scripts/**/*.ts"]
 }

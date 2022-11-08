@@ -2,9 +2,9 @@ import { createApp, onMounted, h } from 'vue';
 import { createPinia } from 'pinia';
 import { useProvideStores } from 'pinia-di';
 import '@/styles/base.scss';
-import { App } from '@/components';
-import { router } from '@/config';
 import { i18n } from '@/i18n';
+import { router } from '@/config/router';
+import { App } from '@/components';
 import { AppStore, setGlobakStore } from '@/store';
 
 const app = createApp({

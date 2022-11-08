@@ -1,0 +1,48 @@
+@use "@/styles/var.scss";
+
+.footerWrapper {
+  background-color: rgb(63, 63, 63);
+  color: rgb(191, 191, 191);
+  /* border-top: 1px solid #ddd; */
+}
+
+.footer {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.item {
+  font-size: 16px;
+  line-height: 19px;
+  margin-right: 20px;
+  color: inherit;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include var.breakpoint(s) {
+    width: 100%;
+    flex: 0 0 auto;
+    margin-bottom: 10px;
+  }
+}
+
+.link {
+  @extend .item;
+  color: inherit;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #fff;
+  }
+}

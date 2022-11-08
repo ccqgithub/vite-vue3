@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "npm run lint:ts && vite build",
+    "build-nocheck": "vite build",
     "preview": "vite preview",
     "style:dts": "node scripts/cssModulesDTS.js",
     "lint": "npm-run-all --parallel lint:*",
@@ -14,24 +15,31 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "2.0.10",
+    "@types/qs": "^6.9.7",
+    "@vueuse/core": "9.2.0",
+    "element-plus": "2.2.19",
     "eventemitter3": "4.0.7",
+    "jarallax": "2.0.4",
     "luxon": "3.0.1",
     "pinia": "2.0.16",
     "pinia-di": "2.1.2",
-    "query-string": "7.1.1",
+    "qs": "6.11.0",
     "vue": "3.2.37",
     "vue-i18n": "9.1.10",
-    "vue-router": "^4.1.2"
+    "vue-router": "4.1.2",
+    "vue-waypoint": "4.2.5"
   },
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
-    "@intlify/vite-plugin-vue-i18n": "5.0.0",
+    "@intlify/vite-plugin-vue-i18n": "6.0.1",
     "@types/node": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.30.7",
     "@typescript-eslint/parser": "5.30.7",
-    "@vitejs/plugin-legacy": "^2.0.0",
-    "@vitejs/plugin-vue": "3.0.1",
+    "@vitejs/plugin-basic-ssl": "0.1.2",
+    "@vitejs/plugin-legacy": "2.1.0",
+    "@vitejs/plugin-vue": "3.1.0",
     "cross-env": "7.0.3",
     "dotenv": "16.0.1",
     "eslint": "8.20.0",
@@ -49,7 +57,8 @@
     "postcss": "8.4.14",
     "postcss-scss": "4.0.4",
     "prettier": "2.7.1",
-    "sass": "1.53.0",
+    "rollup-plugin-visualizer": "5.8.1",
+    "sass": "1.54.0",
     "stylelint": "14.9.1",
     "stylelint-config-css-modules": "4.1.0",
     "stylelint-config-prettier": "9.0.3",
@@ -57,8 +66,12 @@
     "stylelint-prettier": "2.0.0",
     "typed-css-modules": "0.7.2",
     "typescript": "4.7.4",
-    "vite": "3.0.2",
-    "vite-svg-loader": "^3.4.0",
-    "vue-tsc": "0.38.8"
+    "unplugin-element-plus": "0.4.1",
+    "vite": "3.1.0",
+    "vite-plugin-chunk-split": "0.3.0",
+    "vite-plugin-circullar-dependency": "0.0.2",
+    "vite-plugin-legacy-extends": "2.1.0",
+    "vite-svg-loader": "3.4.0",
+    "vue-tsc": "1.0.8"
   }
 }

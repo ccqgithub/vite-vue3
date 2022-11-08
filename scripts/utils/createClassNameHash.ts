@@ -15,7 +15,7 @@ export const getUniqueName = (content: string, p: string): string => {
   // self
   if (cacheNames[hashText] === p) return hashText;
   // repeated
-  return getUniqueName(`${content}~1`, p);
+  return getUniqueName(`${content}-1`, p);
 };
 
 export const createClassNamehash = (args: {
