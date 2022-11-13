@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, Ref, watchEffect } from 'vue';
+import { onMounted, onUnmounted, Ref, watchEffect, WatchStopHandle } from 'vue';
 import { useRoute } from 'vue-router';
 
 const getMetaEl = (name: string) => {
@@ -24,6 +24,7 @@ export const useSEO = (args: {
   let lastKeywords = '';
 
   const route = useRoute();
+  let stopWatch: WatchStopHandle | null = null;
 
   onMounted(() => {
     const path = route.fullPath;
@@ -37,7 +38,7 @@ export const useSEO = (args: {
     lastDescription = descriptionEl.getAttribute('content') || '';
     lastKeywords = keywordsEl.getAttribute('content') || '';
 
-    watchEffect(() => {
+    stopWatch = watchEffect(() => {
       if (args.title?.value) {
         document.title = args.title.value;
       }
@@ -53,6 +54,8 @@ export const useSEO = (args: {
   });
 
   onUnmounted(() => {
+    stopWatch?.();
+
     const path = route.fullPath;
     delete records[path];
 
